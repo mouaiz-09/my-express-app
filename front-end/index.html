@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black; color: #ffffff;">
+    <form id="userForm">
+        <input type="text" id="username" placeholder="اسم المستخدم" required />
+        <input type="email" id="email" placeholder="البريد الإلكتروني" required />
+        <button type="submit">إرسال</button>
+    </form>
+    
+    <script>
+        document.getElementById("userForm").addEventListener("submit", async function (event) {
+            event.preventDefault(); // منع تحديث الصفحة
+    
+            // جمع البيانات من الإدخالات
+            const userData = {
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value
+            };
+    
+            // إرسال البيانات كـ JSON
+            const response = await fetch("http://localhost:3000/user", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            });
+    
+            const result = await response.json();
+            console.log(result);
+        });
+    </script>
+    
+
+</body>
+</html>

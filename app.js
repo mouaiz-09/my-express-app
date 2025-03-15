@@ -3,24 +3,39 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const PORT = 3000;
-
-var user = {
-    name: "mouaiz",
-    age: 15,
-    con: ["algerai", 'hamam righa'],
-    study: "1s",
-    work: "frint-end devloper and study back end"
-}
-mongoose
-// get data
+app.use(express.json())
+var user = []
+// get  home
 app.get("/", (req, res) => {
-    res.json(user)
+    res.send("welcom to home page")
 
 })
 
+// get  data 
+app.get("/user", (req, res) => {
+    if (user.length === 0) {
+        res.status(404).send("no data found")
 
-app.use(express.json())
+    }
+    res.status(200).send(user)
+})
 
+app.post("/user", (req, res) => {
+    var data = req.body;
+    const  finduser = user.find((item) => item.id === data.id && item.name === data.name)
+    if (finduser) {
+        res.status(400).send("هذا المستخدم موجود بالفعل")
+        return;
+    }
+    user.push(data);
+    console.log(data);
+    
+    res.status(201).send("تم بنجاح")
+})
+
+// delet 
+
+  
 
 app.listen(PORT, () => {
     console.log(`🚀 الخادم يعمل على http://localhost:${PORT}`);
