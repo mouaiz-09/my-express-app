@@ -5,9 +5,17 @@ const app = express();
 const PORT = 3000;
 app.use(express.json())
 var user = []
+
+var mouaiz = {
+  nam:"moauz",
+  age : 55, 
+  coun: ['bouira', 'hamm righa']
+  
+}
+
 // get  home
 app.get("/", (req, res) => {
-    res.send("welcom to home page")
+    res.send(mouaiz)
 
 })
 
