@@ -22,12 +22,37 @@ app.get("/", (req, res) => {
 app.get("/user", (req, res) => {
     if (user.length === 0) {
         res.status(404).send(`
-            <html>
-                <body>
-                    <h2>No Data Found</h2>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIABjhEHIhqK--1h7fFhi-gimvD8S0spRiPs4qDrEgv2GUI8lzvowyEEs&s=10" alt="No Data">
-                </body>
-            </html>
+            <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      
+      height: 100vh;
+      
+    }
+  </style>
+  <title>no data</title>
+</head>
+
+<body>
+  
+  <img srcset="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIABjhEHIhqK--1h7fFhi-gimvD8S0spRiPs4qDrEgv2GUI8lzvowyEEs&s=10" alt="">
+  
+  <h1>
+    oppes!!
+  </h1>
+  
+</body>
+
+</html>
         `);
         return;
     }
