@@ -19,15 +19,24 @@ app.get("/", (req, res) => {
 
 })
 
-// get  data 
 app.get("/user", (req, res) => {
     if (user.length === 0) {
-        res.send("  <img srcset="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIABjhEHIhqK--1h7fFhi-gimvD8S0spRiPs4qDrEgv2GUI8lzvowyEEs&s=10" alt="">
-  ")
-
+        res.status(404).send(`
+            <html>
+                <body>
+                    <h2>No Data Found</h2>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIABjhEHIhqK--1h7fFhi-gimvD8S0spRiPs4qDrEgv2GUI8lzvowyEEs&s=10" alt="No Data">
+                </body>
+            </html>
+        `);
+        return;
     }
-    res.status(200).send(user)
-})
+    res.status(200).send(user);
+});
+
+
+
+    
 
 app.post("/user", (req, res) => {
     var data = req.body;
